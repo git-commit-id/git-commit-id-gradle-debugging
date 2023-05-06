@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        maven {
+            // ./gradlew publishAllPublicationsToLocalPluginRepositoryRepository
+            name = "localPluginRepository"
+            url = "${gradle.gradleUserHomeDir}/.local-plugin-repository"
+        }
+    }
+    dependencies {
+        classpath group: "io.github.git-commit-id", name: "git-commit-id-gradle-plugin", version: "0.0.1-alpha"
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply plugin: "io.github.git-commit-id.git-commit-id-gradle-plugin"
+
+group = 'io.github.git-commit-id.testing'
+version = '0.0.1'
+
+gitCommitId {
+    verbose.set(true)
+    generateGitPropertiesFile.set(true)
+}
+
+build.dependsOn tasks.named('gitCommitIdGenerationTask').get()
+gitCommitIdGenerationTask.outputs.upToDateWhen { false }

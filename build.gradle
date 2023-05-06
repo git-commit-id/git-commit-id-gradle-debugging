@@ -23,7 +23,7 @@ version = '0.0.1'
 gitCommitId {
     verbose.set(true)
     outputSettings {
-        generateGitPropertiesFile.set(true)
+        shouldGenerateOutputFile.set(true)
     }
 }
 

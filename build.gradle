@@ -22,9 +22,6 @@ version = '0.0.1'
 
 gitCommitId {
     verbose.set(true)
-    outputSettings {
-        shouldGenerateOutputFile.set(true)
-    }
 }
 
 build.dependsOn tasks.named('gitCommitIdGenerationTask').get()
